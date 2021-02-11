@@ -1,117 +1,14 @@
 <template>
     <div class="card">
-        <h3>{{ title }}</h3>
-        <!-- @click="isOpen=!isOpen" -->
+        <slot name="header">No text</slot>
+        <slot name="default">No text</slot>
+        <!-- <slot>No text</slot> -->
+    <div v-if="$slots.footer"> 
+        <slot name="footer">No text</slot>
+    </div>
         
-        <!-- <button class="btn"
-         @click="open"
-         >{{ isNewsOpen ? 'Закрыть' : "Открыть" }}</button> -->
-         <!-- <app-button @action="open" :text="isNewsOpen ? 'Закрыть' : 'Открыть'"></app-button> -->
-         <app-button @action="open">{{isNewsOpen ? 'Закрыть' : 'Открыть'}}</app-button>
-
-         <!-- <button v-if="wasRead" @click="unmark" class="btn danger">Отметить непрочитанной</button> -->
-         <!-- <app-button color="danger" v-if="wasRead" @action="$emit('unmark', id)" text="Отметить непрочитанной"></app-button> -->
-         <app-button color="danger" v-if="wasRead" @action="$emit('unmark', id)">Отметить непрочитанной</app-button>
-
-         <!-- <button v-if="wasRead" @click="$emit('unmark', id)" class="btn danger">Отметить непрочитанной</button> -->
-        <!-- v-if="isOpen" -->
-        <div v-if="isNewsOpen">
-            <hr/>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde, veritatis!</p>
-            <!-- <app-button v-if="!wasRead" @action="mark" color="primary" text="Прочесть новость"></app-button> -->
-            <app-button v-if="!wasRead" @action="mark" color="primary">Прочесть новость</app-button>
-            <!-- <button v-if="!wasRead" @click="mark" class="btn primary">Прочесть новость</button> -->
-            <!-- <app-news-list :news="news"></app-news-list> -->
-            <app-news-list></app-news-list>
-        </div>
-            <!-- <p v-if="isNewsOpen">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde, veritatis!</p> -->
-        
-    </div>   
+    </div>
 </template>
- <script>
- import AppButton from './AppButton'
- import AppNewsList from './AppNewsList'
- //import AppButton from './AppButton.vue'
- export default {
-    props:{
-        // news: Array,
-        //  title:String,
-        title:{
-            type: String,
-            required: true,
-        },
-        //  id:Number,
-        id:{
-            type:Number,
-            required: true
-        },
-        //  isOpen:Boolean,
-        isOpen:{
-            type:Boolean,
-            required:false,
-            default: false,
-            validator(value){
-                return true
-            }
-        },
-        wasRead: Boolean,
-     },
-    //  emits:[
-    //      'open-news'
-    //  ],
-
-    emits:{
-        'open-news':null,
-        'read-news'(id){
-            if(id){
-                return true
-            }
-            console.warn('нет параметра id для emit read-news')
-            return false
-        },
-        unmark: null
-    },
-
-    // emits:{
-    //     'open-news'(num){
-    //         if(num){
-    //             return true
-    //         }
-    //         console.warn('no data in open-news')
-    //         return false
-    //     }
-    // },
-     data(){
-         return {
-
-             isNewsOpen: this.isOpen
-         }
-     },
-     methods:{
-         open(){
-            //  this.isOpen = !this.isOpen
-            this.isNewsOpen = !this.isNewsOpen
-            if(this.isNewsOpen){
-                this.$emit('open-news')
-                // this.$emit('open-news',42)
-            }
-         },
-        //  unmark(){
-        //    this.$emit('unmark', this.id)  
-        //  },
-         mark(){
-             this.isNewsOpen = false
-             this.$emit('read-news', this.id)
-         }
-     },
-     components:{
-         AppButton,
-         AppNewsList
-        //   AppButton
-     }
- 
- }
- </script>
  <style>
  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
 

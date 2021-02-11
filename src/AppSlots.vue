@@ -3,7 +3,6 @@
     <div class="card">
       <!-- <h2>Актуальные новотси {{ now }}</h2> -->
       <h2>Slots</h2>
-      <!-- <h2>Динамические и ассинхронные компоненты</h2> -->
 
       <!-- <span>Открыто: <strong>{{ openRate }}</strong> | Прочитано: <strong>{{ readRate }}</strong></span> -->
     </div>
@@ -31,7 +30,6 @@
         <small>Это футер</small>
       </template>
     </app-block>
-
     <!-- <div class="card" v-for="item in news" :key="item">
       <h3>{{ item }}</h3>
       <button class="btn"
