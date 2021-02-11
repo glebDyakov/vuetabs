@@ -7,7 +7,7 @@
         </li>
     </ul> -->
     <ul>
-        <li v-for="item in news">
+        <li v-for="item in news" :key="item.id">
             {{item.title}}<span v-if="item.wasRead">!!!</span>
         </li>
     </ul>
