@@ -9,6 +9,11 @@ export default {
     emits:[
         'action'
     ],
+    methods:{
+        btnLog(){
+            console.log('Button log')
+        }
+    },
     props:{
         // text: {
         //     type: String,
